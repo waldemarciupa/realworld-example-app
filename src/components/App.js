@@ -3,7 +3,7 @@ import Header from './Header'
 import React, { lazy, Suspense, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { APP_LOAD, REDIRECT } from '../constants/actionTypes'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { store } from '../store'
 import { push } from 'connected-react-router'
 // const Home = lazy(() => import('../components/Home'/* webpackChunkName: "Home", webpackPreload: true  */))
@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({ type: REDIRECT })
 })
 
-function App (props) {
+function App(props) {
   useEffect(() => {
     if (props.redirectTo) {
       store.dispatch(push(props.redirectTo))
@@ -56,17 +56,17 @@ function App (props) {
           currentUser={props.currentUser}
         />
         <Suspense fallback={<p>Loading...</p>}>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
-            <Route path='/editor/:slug' component={Editor} />
-            <Route path='/editor' component={Editor} />
-            <Route path='/article/:id' component={Article} />
-            <Route path='/settings' component={Settings} />
-            <Route path='/@:username/favorites' component={ProfileFavorites} />
-            <Route path='/@:username' component={Profile} />
-          </Switch>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/editor/:slug' element={<Editor />} />
+            <Route path='/editor' element={<Editor />} />
+            <Route path='/article/:id' element={<Article />} />
+            <Route path='/settings' element={<Settings />} />
+            <Route path='/@:username/favorites' element={<ProfileFavorites />} />
+            <Route path='/@:username' element={<Profile />} />
+          </Routes>
         </Suspense>
       </div>
     )
