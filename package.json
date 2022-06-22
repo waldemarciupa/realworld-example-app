@@ -6,6 +6,8 @@
     "@cypress/code-coverage": "^3.9.6",
     "@cypress/instrument-cra": "^1.4.0",
     "@testing-library/cypress": "^8.0.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "cross-env": "^7.0.3",
